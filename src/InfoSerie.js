@@ -95,7 +95,7 @@ if (success) {
                 <div className="lead text-white">
                   { data.status === 'WATCHED' && <Badge color="success">watched</Badge> }
                   { data.status === 'TO_WATCH' && <Badge color="warning">to watch</Badge> }
-                  Genre:{data.genre}
+                   Genre: {data.genre}
                 </div>   
               </div>
             </div>
