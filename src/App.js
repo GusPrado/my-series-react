@@ -1,11 +1,15 @@
-import React, {useState, useEffect} from 'react'
-import axios from 'axios'
-import { BrowserRouter as Router, Route} from 'react-router-dom'
+import React from 'react'
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 
 import Header from './Header'
 import Genres from './Genres'
+import Series from './Series'
 import NewGenre from './NewGenre'
 import EditGenre from './EditGenre'
+import NewSerie from './NewSerie'
+import InfoSerie from './InfoSerie'
+
+
 
 
 const Home = () => {
@@ -13,23 +17,20 @@ const Home = () => {
 }
 
 function App() {
-  const [data, setData] = useState({})
-  useEffect(() => {
-    axios
-        .get('/api')
-        .then(res => {
-          setData(res.data)
-        })
-  }, [])
   
   return (
     <Router>
       <div>
         <Header />
-        <Route path='/' exact component={Home} />
-        <Route path='/genres' exact component={Genres} />
-        <Route path='/genres/new' exact component={NewGenre} />
-        <Route path='/genres/:id' exact component={EditGenre} />
+        <Switch>
+          <Route path='/' exact component={Home} />
+          <Route path='/genres' exact component={Genres} />
+          <Route path='/genres/new' exact component={NewGenre} />
+          <Route path='/genres/:id' exact component={EditGenre} />
+          <Route path='/series' exact component={Series} />
+          <Route path='/series/new' exact component={NewSerie} />
+          <Route path='/series/:id' exact component={InfoSerie} />
+        </Switch>
         {/* <pre>{JSON.stringify(data)}</pre> */}
       </div>
     </Router>

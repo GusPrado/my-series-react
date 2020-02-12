@@ -2,12 +2,12 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
 
-const Genres = () => {
+const Series = () => {
   const [data, setData] = useState([])
 
   useEffect(() => {
     axios
-      .get('/api/genres')
+      .get('/api/series')
       .then(res => {
         setData(res.data.data)
       })
@@ -17,10 +17,10 @@ if (data.length === 0) {
 
   return (
     <div className="container">
-      <h1>Genres</h1>
-      <Link to="/genres/new" className="btn btn-primary">New genre</Link>
+      <h1>Series</h1>
+      <Link to="/series/new" className="btn btn-primary">New serie</Link>
       <div className="alert alert-warning" role="alert">
-        You don't have any previously created genre
+        You don't have any previously created serie
       </div>
     </div>
   )
@@ -33,7 +33,7 @@ const renderLine = record => {
       <td>{record.name}</td>
       <td>
           <button className="btn btn-danger" onClick={() => handleDelete(record.id)}>Delete</button>
-          <Link to={`/genres/${record.id}`} className="btn btn-warning">Edit</Link>
+          <Link to={`/series/${record.id}`} className="btn btn-warning">Info</Link>
       </td>
     </tr>
   )
@@ -41,7 +41,7 @@ const renderLine = record => {
 
 const handleDelete = id => {
   axios
-    .delete(`/api/genres/${id}`)
+    .delete(`/api/series/${id}`)
     .then(res => {
       const filter = data.filter(item => item.id !== id)
       setData(filter)
@@ -50,8 +50,8 @@ const handleDelete = id => {
 
   return (
   <div className="container">
-    <h1>Genres</h1>
-    <Link to="/genres/new" className="btn btn-primary">New genre</Link>
+    <h1>Series</h1>
+    <Link to="/series/new" className="btn btn-primary">New serie</Link>
     <table className="table table-dark">
       <thead>
         <tr>
@@ -70,4 +70,4 @@ const handleDelete = id => {
   )
 }
 
-export default Genres
+export default Series
