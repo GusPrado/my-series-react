@@ -29,7 +29,7 @@ if (data.length === 0) {
 const renderLine = record => {
   return (
     <tr key={record.id}>
-      <th scope="row">{record.id}</th>
+      <th scope="row" style={{display: 'none'}}>{record.id}</th>
       <td>{record.name}</td>
       <td>
           <button className="btn btn-danger" onClick={() => handleDelete(record.id)}>Delete</button>
@@ -55,7 +55,7 @@ const handleDelete = id => {
     <table className="table table-dark">
       <thead>
         <tr>
-          <th scope="col">ID</th>
+          <th scope="col" style={{display: 'none'}}>ID</th>
           <th scope="col">NAME</th>
           <th scope="col">ACTIONS</th>
         </tr>
